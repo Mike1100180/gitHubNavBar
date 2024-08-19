@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import End from './End';
@@ -24,9 +24,8 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div>
-        {/* Navbar for navigation */}
         <Navbar />
 
         <Routes>
@@ -34,43 +33,21 @@ const App = () => {
           <Route path="/end" element={<End />} />
           <Route path="/info" element={<Info />} />
           <Route path="/biodata" element={<BioData />} />
-          {/* Default route to Home */}
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
 
-        {/* Drag-and-Drop functionality */}
         <DndProvider backend={HTML5Backend}>
-          <div style={{
-            display: 'flex',
-            //justifyContent: 'center',
-            alignItems: 'center',
-            height: '65vh'
-          }}>
-            <div style={{
-              border: '4px solid #ccc',
-              padding: '20px',
-              borderRadius: '5px'
-            }}>
+          <div style={{ display: 'flex', alignItems: 'center', height: '65vh' }}>
+            <div style={{ border: '4px solid #ccc', padding: '20px', borderRadius: '5px' }}>
               <h1>Drag and Drop Example</h1>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'space-around'
-              }}>
-                <div style={{
-                  border: '1px solid #ccc',
-                  padding: '10px',
-                  borderRadius: '5px'
-                }}>
+              <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+                <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
                   <h2>Drag Items</h2>
                   <DragItem name="Item 1" />
                   <DragItem name="Item 2" />
                   <DragItem name="Item 3" />
                 </div>
-                <div style={{
-                  border: '1px solid #ccc',
-                  padding: '10px',
-                  borderRadius: '5px'
-                }}>
+                <div style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}>
                   <h2>Drop Zone</h2>
                   <DropZone onDrop={handleDrop} />
                   {droppedItems.map((item, index) => (
@@ -87,9 +64,7 @@ const App = () => {
                         alignItems: 'center',
                       }}>
                       <p>{item.name}</p>
-                      <button onClick={() => handleRemoveItem(index)}>
-                        Remove
-                      </button>
+                      <button onClick={() => handleRemoveItem(index)}>Remove</button>
                     </div>
                   ))}
                 </div>
