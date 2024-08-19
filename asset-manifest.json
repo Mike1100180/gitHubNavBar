@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/gitHubNavBar/static/css/main.860c8825.css",
-    "main.js": "/gitHubNavBar/static/js/main.e55d7269.js",
+    "main.js": "/gitHubNavBar/static/js/main.d74c792d.js",
     "index.html": "/gitHubNavBar/index.html",
     "main.860c8825.css.map": "/gitHubNavBar/static/css/main.860c8825.css.map",
-    "main.e55d7269.js.map": "/gitHubNavBar/static/js/main.e55d7269.js.map"
+    "main.d74c792d.js.map": "/gitHubNavBar/static/js/main.d74c792d.js.map"
   },
   "entrypoints": [
     "static/css/main.860c8825.css",
-    "static/js/main.e55d7269.js"
+    "static/js/main.d74c792d.js"
   ]
 }
