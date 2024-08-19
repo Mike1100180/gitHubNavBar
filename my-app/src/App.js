@@ -7,6 +7,8 @@ import Info from './Info';
 import BioData from './BioData';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { isMobile } from 'react-device-detect';
 import DragItem from './DragItem';
 import DropZone from './DropZone';
 
@@ -26,12 +28,10 @@ const App = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div style={{ display: 'grid', gridTemplateRows: 'auto 1fr', gap: '20px', height: '100vh' }}>
-        {/* Navbar for navigation */}
         <div style={{ gridRow: '1' }}>
           <Navbar />
         </div>
 
-        {/* Main Content Area */}
         <div style={{ gridRow: '2', padding: '20px', overflowY: 'auto' }}>
           <Routes>
             <Route path="/home" element={<Home />} />
@@ -41,8 +41,7 @@ const App = () => {
             <Route path="*" element={<Navigate to="/home" />} />
           </Routes>
 
-          {/* Drag-and-Drop functionality */}
-          <DndProvider backend={HTML5Backend}>
+          <DndProvider backend={isMobile ? TouchBackend : HTML5Backend}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', alignItems: 'start', marginTop: '20px' }}>
               <div style={{ border: '4px solid #ccc', padding: '20px', borderRadius: '5px' }}>
                 <h1>Drag Items</h1>
